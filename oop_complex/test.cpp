@@ -6,11 +6,9 @@
 #include <sstream>
 #include <type_traits>
 
-
 void CheckDouble(double actual, double expected) {
-    REQUIRE_THAT( actual, 
-        Catch::Matchers::WithinRel(expected, 0.001)
-     || Catch::Matchers::WithinAbs(0, 1e-9) );
+    REQUIRE_THAT(
+        actual, Catch::Matchers::WithinRel(expected, 0.001) || Catch::Matchers::WithinAbs(0, 1e-9));
 }
 
 void Check(const Complex& actual, const std::complex<double>& expected) {
@@ -63,7 +61,6 @@ TEST_CASE("Basic methods", "[oop_complex]") {
     CheckDouble(z1.Abs(), 1.8087538852);
 }
 
-
 TEST_CASE("Copy correctness", "[oop_complex]") {
     Complex a;
     Complex b(a);
@@ -82,8 +79,7 @@ TEST_CASE("Copy correctness", "[oop_complex]") {
     Check(c, std::complex<double>{0, 1});
 }
 
-
-TEST_CASE("Comparison operators", "[complex]"){
+TEST_CASE("Comparison operators", "[complex]") {
     Complex x(1, 1);
     Complex y(1, 1);
     Complex z(2, 2);
@@ -94,13 +90,11 @@ TEST_CASE("Comparison operators", "[complex]"){
     REQUIRE(x != z);
 }
 
-
 TEST_CASE("Unary plus/minus", "[complex]") {
     Complex z(3, 4);
     Check(+z, std::complex<double>(3, 4));
     Check(-z, std::complex<double>(-3, -4));
 }
-
 
 TEST_CASE("Arithmetics", "[complex]") {
     INFO("addition") {
@@ -130,7 +124,7 @@ TEST_CASE("Arithmetics", "[complex]") {
         z2 -= 5;
         Check(z2, std::complex<double>(-2, -4));
     }
-    
+
     INFO("multiplication") {
         Complex z1(2, 3);
         Complex z2(4, 5);
