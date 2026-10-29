@@ -21,4 +21,4 @@ jobs:
       run: cd build && make test_multiplication
 
     - name: Run tests
-      run: ./test_multiplication
+      run: cd build && ./test_multiplication
