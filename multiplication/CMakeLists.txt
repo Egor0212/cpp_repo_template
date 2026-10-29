@@ -1,0 +1,1 @@
+add_sources(test_multiplication test.cpp)
